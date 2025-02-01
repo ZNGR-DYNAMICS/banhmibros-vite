@@ -14,30 +14,22 @@ export default function Link({ href, className = '', children, 'data-en': enText
     const textRef = useRef<HTMLParagraphElement>(null);
     const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
-    // Detect the browser language (German or English)
-    const lang = navigator.language.startsWith('de') ? 'de' : 'en';
-    console.log('Detected language:', lang); // Debug log to check language detection
-
-    // Determine the translated text, prioritizing 'data-en' and 'data-de', then falling back to children
+    const language = navigator.language.startsWith('de') ? 'de' : 'en';
     let translatedText: string;
     
-    if (lang === 'de' && deText) {
+    if (language === 'de' && deText) {
         translatedText = deText;
-    } else if (lang === 'en' && enText) {
+    } else if (language === 'en' && enText) {
         translatedText = enText;
     } else {
         translatedText = children as string;
     }
 
-    console.log('Translated Text:', translatedText);
-
-    // Measure the dimensions of the text for the animation
     useLayoutEffect(() => {
         if (textRef.current) {
             setTimeout(() => {
                 const { width, height } = textRef.current!.getBoundingClientRect();
                 setDimensions({ width, height });
-                console.log('Text Dimensions:', { width, height }); // Debug log for dimensions
             }, 0)
         }
     }, [translatedText, className]);
