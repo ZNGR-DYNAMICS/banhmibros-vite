@@ -1,6 +1,6 @@
 import Link from './Link';
 
-const Footer: React.FC = () => {
+export default function Footer(){
 
     return (
         <section className="relative flex flex-col p-16 bg-black-300 text-white-500">
@@ -37,5 +37,3 @@ const Footer: React.FC = () => {
         </section>
     )
 }
-
-export default Footer;
