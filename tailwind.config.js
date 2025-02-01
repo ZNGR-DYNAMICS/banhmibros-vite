@@ -23,7 +23,7 @@ export default {
                 poppins: ['Poppins', 'sans-serif'],
             },
             fontSize: {
-                '10xl': '10',
+                '10xl': '10rem',
             },
             colors: {
                 black: {
