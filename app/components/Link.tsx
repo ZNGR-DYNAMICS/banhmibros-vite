@@ -42,7 +42,7 @@ export default function Link({ href, className = '', children, 'data-en': enText
     return (
         <a
             href={href}
-            className={`relative inline-flex ${className} text-nowrap cursor-pointer`}
+            className={`relative ${className} hover:text-bmb-orange text-nowrap transition-colors duration-300 cursor-pointer`}
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
             style={{ width: dimensions.width, height: dimensions.height }}
@@ -50,14 +50,14 @@ export default function Link({ href, className = '', children, 'data-en': enText
             <div className="relative overflow-hidden w-full h-full">
                 <motion.p 
                     ref={textRef} 
-                    className="absolute top-0 inline-block" 
+                    className="absolute top-0" 
                     variants={bounceVariant} initial="initial" 
                     animate={hover ? 'hover' : 'initial'}
                     >
                     {translatedText}
                 </motion.p>
                 <motion.p
-                    className="absolute inline-block"
+                    className="absolute"
                     style={{ top: -dimensions.height }}
                     variants={bounceVariant} 
                     initial="initial"
