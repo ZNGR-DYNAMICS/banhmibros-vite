@@ -5,22 +5,43 @@ interface LinkProps {
     href: string;
     className?: string;
     children: React.ReactNode;
+    'data-en'?: string;
+    'data-de'?: string;
 }
 
-export default function Link({ href, className = '', children }: LinkProps) {
+export default function Link({ href, className = '', children, 'data-en': enText, 'data-de': deText }: LinkProps) {
     const [hover, setHover] = useState(false);
     const textRef = useRef<HTMLParagraphElement>(null);
     const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
+    // Detect the browser language (German or English)
+    const lang = navigator.language.startsWith('de') ? 'de' : 'en';
+    console.log('Detected language:', lang); // Debug log to check language detection
+
+    // Determine the translated text, prioritizing 'data-en' and 'data-de', then falling back to children
+    let translatedText: string;
+    
+    if (lang === 'de' && deText) {
+        translatedText = deText;
+    } else if (lang === 'en' && enText) {
+        translatedText = enText;
+    } else {
+        translatedText = children as string;
+    }
+
+    console.log('Translated Text:', translatedText);
+
+    // Measure the dimensions of the text for the animation
     useLayoutEffect(() => {
         if (textRef.current) {
             setTimeout(() => {
                 const { width, height } = textRef.current!.getBoundingClientRect();
                 setDimensions({ width, height });
-            }, 0);
+                console.log('Text Dimensions:', { width, height }); // Debug log for dimensions
+            }, 0)
         }
-    }, [children, className]);
-
+    }, [translatedText, className]);
+    
     const bounceVariant = {
         initial: { y: 0, transition: { type: 'spring', stiffness: 175, damping: 15 } },
         hover: { y: dimensions.height, transition: { type: 'spring', stiffness: 175, damping: 15 } }
@@ -29,16 +50,28 @@ export default function Link({ href, className = '', children }: LinkProps) {
     return (
         <a
             href={href}
-            className={`relative ${className} text-nowrap inline-block overflow-hidden cursor-pointer`}
+            className={`relative inline-flex ${className} text-nowrap cursor-pointer`}
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
+            style={{ width: dimensions.width, height: dimensions.height }}
         >
-            <div className="relative overflow-hidden" style={{ width: dimensions.width, height: dimensions.height }}>
-                <motion.p ref={textRef} className="absolute top-0 inline-block" variants={bounceVariant} initial="initial" animate={hover ? 'hover' : 'initial'}>
-                    {children}
+            <div className="relative overflow-hidden w-full h-full">
+                <motion.p 
+                    ref={textRef} 
+                    className="absolute top-0 inline-block" 
+                    variants={bounceVariant} initial="initial" 
+                    animate={hover ? 'hover' : 'initial'}
+                    >
+                    {translatedText}
                 </motion.p>
-                <motion.p className="absolute inline-block" style={{ top: -dimensions.height }} variants={bounceVariant} initial="initial" animate={hover ? 'hover' : 'initial'}>
-                    {children}
+                <motion.p
+                    className="absolute inline-block"
+                    style={{ top: -dimensions.height }}
+                    variants={bounceVariant} 
+                    initial="initial"
+                    animate={hover ? 'hover' : 'initial'}
+                    >
+                    {translatedText}
                 </motion.p>
             </div>
         </a>
