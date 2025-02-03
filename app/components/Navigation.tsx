@@ -1,10 +1,12 @@
 import React from 'react';
 import { useSwipeable } from 'react-swipeable';
 import BanhMiLogo from '../assets/logo-banhmibros-black.svg';
+import NavLink from './NavLink';
+import Link from './Link';
 
 interface NavigationProps {
-  isOpen: boolean;
-  setIsOpen: (open: boolean) => void;
+    isOpen: boolean;
+    setIsOpen: (open: boolean) => void;
 }
 
 const Navigation: React.FC<NavigationProps> = ({ isOpen, setIsOpen }) => {
@@ -38,9 +40,9 @@ const Navigation: React.FC<NavigationProps> = ({ isOpen, setIsOpen }) => {
                         <p>Metzgergasse 15</p>
                         <p>9000 St.Gallen</p>
                     </div>
-                    <div className='flex flex-col'>
-                        <a className='hover:text-bmb-orange transition-colors duration-300' href='mailto:hello@banh-mi-bros.ch'>hello[at]banh-mi-bros.ch</a>
-                        <a className='hover:text-bmb-orange transition-colors duration-300' href='tel:0784809223'>078 480 92 23</a>
+                    <div className='flex flex-col items-end'>
+                        <Link href='mailto:hello@banh-mi-bros.ch'>hello[at]banh-mi-bros.ch</Link>
+                        <Link href='tel:0784809223'>078 480 92 23</Link>
                     </div>
                     <div className="hidden md:flex lg:flex md:flex-col lg:flex-col mt-4 md:text-base items-end gap-2 font-poppins font-medium lg:text-xl">
                         <a href="https://instagram.com/banhmibros_ch/" className="flex flex-row md:gap-2 lg:gap-3 items-center hover:text-bmb-orange transition-colors duration-300">
@@ -64,61 +66,11 @@ const Navigation: React.FC<NavigationProps> = ({ isOpen, setIsOpen }) => {
             {/* Navigation Left - Links */}
             <div className='absolute top-4 left-4 lg:top-8 lg:left-8 flex flex-col flex-wrap gap-8 lg:gap-16'>
                 <nav className='flex flex-col lg:gap-2 text-8xl md:text-8xl lg:text-9xl circula-bold md:circula-extrabold lg:circula-black'>
-                    <a className='flex flex-row gap-4 items-center hover:text-bmb-orange transition-colors duration-300' href="/">
-                        <h1>
-                            Home
-                        </h1>
-                        <svg className='animate-nav-left-arrow' width="50" height="34" viewBox="0 0 50 34" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fillRule="evenodd" clipRule="evenodd"
-                                d="M31.0792 1.5207C31.8002 0.826434 32.9691 0.826434 33.69 1.5207L48.4593 15.7429C49.1802 16.4372 49.1802 17.5628 48.4593 18.2571L33.69 32.4793C32.9691 33.1736 31.8002 33.1736 31.0792 32.4793C30.3582 31.785 30.3582 30.6594 31.0792 29.9651L42.6968 18.7778H2.84615C1.82655 18.7778 1 17.9818 1 17C1 16.0182 1.82655 15.2222 2.84615 15.2222H42.6968L31.0792 4.03486C30.3582 3.34059 30.3582 2.21496 31.0792 1.5207Z"
-                                fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"
-                            />
-                        </svg>
-                    </a>
-                    <a className='flex flex-row gap-4 items-center hover:text-bmb-orange transition-colors duration-300' href="/menu">
-                        <h1>
-                            Menu
-                        </h1>
-                        <svg className='animate-nav-left-arrow' width="50" height="34" viewBox="0 0 50 34" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fillRule="evenodd" clipRule="evenodd"
-                                d="M31.0792 1.5207C31.8002 0.826434 32.9691 0.826434 33.69 1.5207L48.4593 15.7429C49.1802 16.4372 49.1802 17.5628 48.4593 18.2571L33.69 32.4793C32.9691 33.1736 31.8002 33.1736 31.0792 32.4793C30.3582 31.785 30.3582 30.6594 31.0792 29.9651L42.6968 18.7778H2.84615C1.82655 18.7778 1 17.9818 1 17C1 16.0182 1.82655 15.2222 2.84615 15.2222H42.6968L31.0792 4.03486C30.3582 3.34059 30.3582 2.21496 31.0792 1.5207Z"
-                                fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"
-                            />
-                        </svg>
-                    </a>
-                    <a className='flex flex-row gap-4 items-center hover:text-bmb-orange transition-colors duration-300' href="/banh-mi">
-                        <h1>
-                            Banh Mi
-                        </h1>
-                        <svg className='animate-nav-left-arrow' width="50" height="34" viewBox="0 0 50 34" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fillRule="evenodd" clipRule="evenodd"
-                                d="M31.0792 1.5207C31.8002 0.826434 32.9691 0.826434 33.69 1.5207L48.4593 15.7429C49.1802 16.4372 49.1802 17.5628 48.4593 18.2571L33.69 32.4793C32.9691 33.1736 31.8002 33.1736 31.0792 32.4793C30.3582 31.785 30.3582 30.6594 31.0792 29.9651L42.6968 18.7778H2.84615C1.82655 18.7778 1 17.9818 1 17C1 16.0182 1.82655 15.2222 2.84615 15.2222H42.6968L31.0792 4.03486C30.3582 3.34059 30.3582 2.21496 31.0792 1.5207Z"
-                                fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"
-                            />
-                        </svg>
-                    </a>
-                    <a className='flex flex-row gap-4 items-center hover:text-bmb-orange transition-colors duration-300' href="/order">
-                        <h1>
-                            Order
-                        </h1>
-                        <svg className='animate-nav-left-arrow' width="50" height="34" viewBox="0 0 50 34" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fillRule="evenodd" clipRule="evenodd"
-                                d="M31.0792 1.5207C31.8002 0.826434 32.9691 0.826434 33.69 1.5207L48.4593 15.7429C49.1802 16.4372 49.1802 17.5628 48.4593 18.2571L33.69 32.4793C32.9691 33.1736 31.8002 33.1736 31.0792 32.4793C30.3582 31.785 30.3582 30.6594 31.0792 29.9651L42.6968 18.7778H2.84615C1.82655 18.7778 1 17.9818 1 17C1 16.0182 1.82655 15.2222 2.84615 15.2222H42.6968L31.0792 4.03486C30.3582 3.34059 30.3582 2.21496 31.0792 1.5207Z"
-                                fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"
-                            />
-                        </svg>
-                    </a>
-                    <a className='flex flex-row gap-4 items-center hover:text-bmb-orange transition-colors duration-300' href="/catering">
-                        <h1>
-                            Catering
-                        </h1>
-                        <svg className='animate-nav-left-arrow' width="50" height="34" viewBox="0 0 50 34" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fillRule="evenodd" clipRule="evenodd"
-                                d="M31.0792 1.5207C31.8002 0.826434 32.9691 0.826434 33.69 1.5207L48.4593 15.7429C49.1802 16.4372 49.1802 17.5628 48.4593 18.2571L33.69 32.4793C32.9691 33.1736 31.8002 33.1736 31.0792 32.4793C30.3582 31.785 30.3582 30.6594 31.0792 29.9651L42.6968 18.7778H2.84615C1.82655 18.7778 1 17.9818 1 17C1 16.0182 1.82655 15.2222 2.84615 15.2222H42.6968L31.0792 4.03486C30.3582 3.34059 30.3582 2.21496 31.0792 1.5207Z"
-                                fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"
-                            />
-                        </svg>
-                    </a>
+                    <NavLink className='' href="/">Home</NavLink>
+                    <NavLink className='' href="/menu">Menu</NavLink>
+                    <NavLink className='' href="/banh-mi">Banh Mi</NavLink>
+                    <NavLink className='' href="/order">Order</NavLink>
+                    <NavLink className='' href="/catering">Catering</NavLink>
                 </nav>
 
                 {/* Address (Small Screen) */}
@@ -131,8 +83,8 @@ const Navigation: React.FC<NavigationProps> = ({ isOpen, setIsOpen }) => {
                         <p>9000 St.Gallen</p>
                     </div>
                     <div className='flex flex-col'>
-                        <a className='hover:text-bmb-orange transition-colors duration-300' href='mailto:hello@banh-mi-bros.ch'>hello[at]banh-mi-bros.ch</a>
-                        <a className='hover:text-bmb-orange transition-colors duration-300' href='tel:0784809223'>078 480 92 23</a>
+                        <Link className='hover:text-bmb-orange transition-colors duration-300' href='mailto:hello@banh-mi-bros.ch'>hello[at]banh-mi-bros.ch</Link>
+                        <Link className='hover:text-bmb-orange transition-colors duration-300' href='tel:0784809223'>078 480 92 23</Link>
                     </div>
                 </div>
 
@@ -152,7 +104,6 @@ const Navigation: React.FC<NavigationProps> = ({ isOpen, setIsOpen }) => {
                     </a>
                 </div>
             </div>
-            {/* Socials Section (Large Screen) */}
         </div>
     );
 };
