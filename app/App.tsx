@@ -9,6 +9,7 @@ import AnimatedText from './AnimatedText';
 import Button from './components/Button';
 import Reviews from './components/Reviews';
 import Footer from './components/Footer';
+import NavLink from './components/NavLink';
 
 function App() {
     const [isOpen, setIsOpen] = useState(false);
@@ -59,19 +60,11 @@ function App() {
                             </svg>
                         </button>
                     </div>
-                    <nav className='flex flex-col xl:gap-4 text-8xl xl:text-9xl'>
-                        <h1 className='hover:text-bmb-orange transition-colors duration-300'>
-                            <a className='font-circula circula-bold sm:circula-extrabold xl:circula-black' href="/menu">Menu</a>
-                        </h1>
-                        <h1 className="hover:text-bmb-orange transition-colors duration-300">
-                            <a className='circula-bold sm:circula-extrabold xl:circula-black' href="/banhmi">Banh Mi</a>
-                        </h1>
-                        <h1 className="hover:text-bmb-orange transition-colors duration-300">
-                            <a className='circula-bold sm:circula-extrabold xl:circula-black' href="/order">Order</a>
-                        </h1>
-                        <h1 className="hover:text-bmb-orange transition-colors duration-300">
-                            <a className='circula-bold sm:circula-extrabold xl:circula-black' href="/socials">Socials</a>
-                        </h1>
+                    <nav className='flex flex-col xl:gap-4 text-8xl xl:text-9xl font-circula circula-bold sm:circula-extrabold xl:circula-black'>
+                        <NavLink href="/menu">Menu</NavLink>
+                        <NavLink href="/banhmi">Banh Mi</NavLink>
+                        <NavLink href="/order">Order</NavLink>
+                        <NavLink href="/socials">Socials</NavLink>
                     </nav>
                     <div className='flex flex-wrap items-center hover:text-bmb-orange transition-colors duration-300 my-0 sm:my-4 xl:my-8'>
                         <a className="inline-flex items-center gap-4 sm:gap-8" href="#test">
