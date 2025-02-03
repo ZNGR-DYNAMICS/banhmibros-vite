@@ -27,10 +27,20 @@ export default function Link({ href, className = '', children, 'data-en': enText
 
     useLayoutEffect(() => {
         if (textRef.current) {
-            setTimeout(() => {
-                const { width, height } = textRef.current!.getBoundingClientRect();
-                setDimensions({ width, height });
-            }, 0)
+            const updateDimensions = () => {
+                if (textRef.current) {
+                    const { width, height } = textRef.current!.getBoundingClientRect();
+                    setDimensions({ width, height });
+                }
+            }
+            
+            setTimeout(updateDimensions, 0);
+
+            window.addEventListener('resize', updateDimensions);
+
+            return () => {
+                window.removeEventListener('resize', updateDimensions);
+            }
         }
     }, [translatedText, className]);
     
@@ -48,7 +58,7 @@ export default function Link({ href, className = '', children, 'data-en': enText
             style={{ width: dimensions.width, height: dimensions.height }}
         >
             <div className="relative overflow-hidden w-full h-full">
-                <motion.p 
+                <motion.p
                     ref={textRef} 
                     className="absolute top-0" 
                     variants={bounceVariant} initial="initial" 
