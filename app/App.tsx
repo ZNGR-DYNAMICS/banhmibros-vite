@@ -7,7 +7,7 @@ import DatabaseViewer from './DatabaseViewer';
 import Navigation from './components/Navigation';
 import AnimatedText from './AnimatedText';
 import Button from './components/Button';
-import Reviews from './components/Reviews';
+import Reviews from './components/Reviews/Reviews';
 import Footer from './components/Footer';
 import NavLink from './components/NavLink';
 
